@@ -1,13 +1,8 @@
-import { useState } from 'react';
 
 
-function Bookings() {
+function Bookings(props) {
 
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('17:00');
-    const [guests, setGuests] = useState(1);
-    const [occasion, setOccasion] = useState('BirthDay');
-    const [availableTimes, setAvailableTimes] = useState(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
+    const times = props.bookingStates.availableTimes.map(time => {time = <option>{time}</option>; return time})
 
     return (
         <div>
@@ -15,24 +10,24 @@ function Bookings() {
                 <h1 style={{fontWeight: 'bold', color: 'rgb(237, 239, 238)'}}>Make a Reservation</h1>
             </div>
             <form className='resForm'>
+
                 <label htmlFor="res-date">Choose date</label>
-                <input type="date" name='res-date' id="res-date" onChange={e => setDate(e.target.value)} value={date}/>
+                <input type="date" name='res-date' id="res-date" onChange={e => {props.bookingStates.setDate(e.target.value); props.bookingStates.setAvailableTimes(e.target.value)}} value={props.bookingStates.date}/>
+
                 <label htmlFor="res-time">Choose time</label>
-                <select name="res-time" id="res-time" value={time} onChange={e => setTime(e.target.value)}>
-                    <option>17:00</option>
-                    <option>18:00</option>
-                    <option>19:00</option>
-                    <option>20:00</option>
-                    <option>21:00</option>
-                    <option>22:00</option>
+                <select name="res-time" id="res-time" value={props.bookingStates.time} onChange={e => props.bookingStates.setTime(e.target.value)}>
+                    {times}
                 </select>
+
                 <label htmlFor="guests">Number of guests</label>
-                <input type="number" name='guests' value={guests} min="1" max="10" id="guests" onChange={e => setGuests(e.target.value)}/>
+
+                <input type="number" name='guests' value={props.bookingStates.guests} min="1" max="10" id="guests" onChange={e => props.bookingStates.setGuests(e.target.value)}/>
                 <label htmlFor="occasion">Occasion</label>
-                <select id="occasion" name='occasion' value={occasion} onChange={e => setOccasion(e.target.value)}>
+                <select id="occasion" name='occasion' value={props.bookingStates.occasion} onChange={e => props.bookingStates.setOccasion(e.target.value)}>
                     <option>Birthday</option>
                     <option>Anniversary</option>
                 </select>
+
                 <input type="submit" value="Make Your reservation" className="button"/>
             </form>
         </div>
