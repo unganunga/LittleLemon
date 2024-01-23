@@ -2,7 +2,7 @@
 
 function Bookings(props) {
 
-    const times = props.bookingStates.availableTimes.map(time => {time = <option>{time}</option>; return time})
+    const times = props.bookingStates.availableTimes.map(time => {time = <option key={time}>{time}</option>; return time});
 
     return (
         <div>
@@ -28,7 +28,7 @@ function Bookings(props) {
                     <option>Anniversary</option>
                 </select>
 
-                <input type="submit" value="Make Your reservation" className="button"/>
+                <input type="submit" value="Make Your reservation" className="button" onClick={e => props.bookingStates.handleSubmit(e)}/>
             </form>
         </div>
     )
