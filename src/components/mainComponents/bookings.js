@@ -104,7 +104,7 @@ function Bookings(props) {
                     <option>Anniversary</option>
                 </select>
 
-                <input type="submit" value="Make Your reservation" className="button" onClick={e => props.bookingStates.handleSubmit(e)} disabled={!isValid}/>
+                <input data-testid='submitButton' type="submit" value="Make Your reservation" className="button" onClick={e => props.bookingStates.handleSubmit(e)} disabled={!isValid}/>
             </form>
         </div>
     )
