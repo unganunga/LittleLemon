@@ -281,6 +281,7 @@ button:active {
 .resForm > label {
   display: block;
   margin: 20px;
+  margin-top: 30px;
   margin-bottom: 0;
   font-family: 'Karla';
   font-size: 18pt;
@@ -288,10 +289,11 @@ button:active {
 .resForm > input {
   display: block;
   margin: 20px;
+  margin-bottom: 0;
+  margin-top: 5px;
   border-radius: 12px;
   height: 35px;
   text-align: center;
-  border: 1px solid;
   font-family: 'Karla';
   font-size: 18pt;
   width: 350px;
@@ -299,10 +301,11 @@ button:active {
 .resForm > select {
   display: block;
   margin: 20px;
+  margin-bottom: 0;
+  margin-top: 5px;
   border-radius: 12px;
   height: 38px;
   text-align: center;
-  border: 1px solid;
   font-family: 'Karla';
   font-size: 18pt;
   width: 350px;

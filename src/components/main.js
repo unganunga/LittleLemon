@@ -1,14 +1,12 @@
-import { useState, useReducer } from 'react';
-import React from 'react';
+import { React, useState, useReducer } from 'react';
 import Bookings from './mainComponents/bookings';
 import Home from "./mainComponents/home";
 import Menu from "./mainComponents/menu";
 import Order from "./mainComponents/order";
 import Login from "./mainComponents/login";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import useFormAPI from './mainComponents/bookingTimeFunctions';
 import ConfirmedBooking from './confirmBooking';
-import { useNavigate } from "react-router-dom";
 
 
 
