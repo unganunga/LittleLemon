@@ -2,22 +2,43 @@ import { useState, useEffect } from "react";
 
 function Bookings(props) {
     const [isValid, setIsValid] = useState(false);
+    const [isTouchedName, setIsTouchedName] = useState(false);
     const [isTouchedDate, setIsTouchedDate] = useState(false);
     const [isTouchedTime, setIsTouchedTime] = useState(false);
     const [isTouchedGuests, setIsTouchedGuests] = useState(false);
+    const [nameStyle, setNameStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}])
     const [dateStyle, setDateStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [timeStyle, setTimeStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [guestStyle, setGuestStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [dateError, setDateError] = useState('')
 
-    const times = props.bookingStates.availableTimes.map(time => {time = <option key={time}>{time}</option>; return time});
+
+    //const times = props.bookingStates.availableTimes.map(time => {time = <option key={time}>{time}</option>; return time});
+
+    const times = props.bookingStates.availableTimes ? props.bookingStates.availableTimes.map(time => {time = <option key={time}>{time}</option>; return time}) : [];
 
     function validateForm() {
+        // check if form fields have been touched and whether valid data has been entered
+
         let valid = false;
+        let validName = false;
         let validTime = false;
         let validDate = false;
         let validGuests = true;
 
+
+        // check name has been entered and contains at least 3 characters
+        if(isTouchedName) {
+            const name = props.bookingStates.name
+            if(name.length < 3){
+                validName = false;
+                setNameStyle([{border: 'solid red'}, {marginTop: '0px'}])
+            }
+            else {
+                validName = true
+                setNameStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}])
+            }
+        }
 
         // check date is selected and not in past
         if(isTouchedDate) {
@@ -64,15 +85,16 @@ function Bookings(props) {
             }
         }
 
-        (validTime && validDate && validGuests) ? valid = true : valid = false
+        (validName && validTime && validDate && validGuests) ? valid = true : valid = false;
 
         setIsValid(valid);
     }
 
-
+    // validate form fields and re-render when form fields are changed and have been unfocussed at least once
     useEffect(() => {
         validateForm()
-    }, [props.bookingStates.date, isTouchedDate,
+    }, [props.bookingStates.name, isTouchedName,
+        props.bookingStates.date, isTouchedDate,
         props.bookingStates.time, isTouchedTime,
         props.bookingStates.guests, isTouchedGuests
     ])
@@ -84,11 +106,15 @@ function Bookings(props) {
             </div>
             <form className='resForm'>
 
-                <label htmlFor="res-date">Choose date</label>
+                <label htmlFor="">Name for booking</label>
+                <input style={nameStyle[0]} type="name" name="res-name" id="res-name" onChange={e => {props.bookingStates.setName(e.target.value)}} value={props.bookingStates.name} onBlur={e => {setIsTouchedName(true)}}/>
+                <div name='invalidName' style={nameStyle[1]}>Name must be at least three (3) characters long</div>
+
+                <label htmlFor="res-date">Booking date</label>
                 <input style={dateStyle[0]} type="date" name='res-date' id="res-date" onChange={e => {props.bookingStates.setDate(e.target.value); props.bookingStates.setAvailableTimes(e.target.value)}} value={props.bookingStates.date} onBlur={e => {setIsTouchedDate(true)}} />
                 <div name="invalidDate" style={dateStyle[1]}>{dateError}</div>
 
-                <label htmlFor="res-time">Choose time</label>
+                <label htmlFor="res-time">Booking time</label>
                 <select style={timeStyle[0]} name="res-time" id="res-time" value={props.bookingStates.time} onChange={e => {props.bookingStates.setTime(e.target.value)}} onBlur={e => {setIsTouchedTime(true); validateForm()}}>
                     {times}
                 </select>

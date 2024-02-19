@@ -23,8 +23,7 @@ function Specials() {
                     </div>
                     <p className="cardP">The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.</p>
                     <div className="delivery">
-                        <h4>Order a delivery</h4>
-                        <img src={Delivery} height={'30px'}></img>
+                        <Link to={'/order'} id='specialOrder'>Order online <img src={Delivery} height={'30px'}></img></Link>
                     </div>
                 </Card>
                 <Card>
@@ -35,8 +34,7 @@ function Specials() {
                         </div>
                         <p className="cardP">Our Bruchetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.</p>
                         <div className="delivery">
-                            <h4>Order a delivery</h4>
-                            <img src={Delivery} height={'30px'}></img>
+                            <Link to={'/order'} id='specialOrder'>Order online <img src={Delivery} height={'30px'}></img></Link>
                         </div>
                 </Card>
                 <Card>
@@ -47,8 +45,7 @@ function Specials() {
                         </div>
                         <p className="cardP">This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.</p>
                         <div className="delivery">
-                            <h4>Order a delivery</h4>
-                            <img src={Delivery} height={'30px'}></img>
+                            <Link to={'/order'} id='specialOrder'>Order online <img src={Delivery} height={'30px'}></img></Link>
                         </div>
                 </Card>
 

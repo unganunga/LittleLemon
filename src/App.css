@@ -175,9 +175,23 @@ button:active {
   margin: auto;
   align-items: center;
 }
-.delivery > img {
+.delivery > a {
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+.delivery > a:hover {
+  font-weight: bolder;
+  font-style: initial;
+  font-size: large;
+}
+.delivery > a > img {
   margin-bottom: 0;
   margin-top: 7px;
+  position: relative;
+  top: 11px;
 }
 .reviewBackground {
   display: flex;
@@ -270,7 +284,7 @@ button:active {
 .resForm {
   display: grid;
   max-width: 500px;
-  height: 620px;
+  min-height: 670px;
   margin: auto;
   margin-top: 5%;
   margin-bottom: 5%;
@@ -312,11 +326,11 @@ button:active {
 }
 .resForm > .button {
   font-family: 'Karla';
-  width: 350px;
+  width: 351px;
   height: 50px;
   margin: auto;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-top: 20px;
   border-radius: 16px;
   border: none;
   color: rgb(51, 51, 51);
