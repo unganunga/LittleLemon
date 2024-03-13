@@ -6,11 +6,11 @@ function Bookings(props) {
     const [isTouchedDate, setIsTouchedDate] = useState(false);
     const [isTouchedTime, setIsTouchedTime] = useState(false);
     const [isTouchedGuests, setIsTouchedGuests] = useState(false);
-    const [nameStyle, setNameStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}])
+    const [nameStyle, setNameStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [dateStyle, setDateStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [timeStyle, setTimeStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
     const [guestStyle, setGuestStyle] = useState([{border: '1px solid'}, {marginTop: '0px', display: 'none'}]);
-    const [dateError, setDateError] = useState('')
+    const [dateError, setDateError] = useState('');
 
 
     //const times = props.bookingStates.availableTimes.map(time => {time = <option key={time}>{time}</option>; return time});
@@ -32,31 +32,31 @@ function Bookings(props) {
             const name = props.bookingStates.name
             if(name.length < 3){
                 validName = false;
-                setNameStyle([{border: 'solid red'}, {marginTop: '0px'}])
+                setNameStyle([{border: 'solid red'}, {marginTop: '0px'}]);
             }
             else {
-                validName = true
-                setNameStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}])
+                validName = true;
+                setNameStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}]);
             }
         }
 
         // check date is selected and not in past
         if(isTouchedDate) {
             const currentDate = new Date().getDate();
-            const selectedDate = new Date(props.bookingStates.date).getDate()
+            const selectedDate = new Date(props.bookingStates.date).getDate();
             if(selectedDate < currentDate) {
                 validDate = false;
-                setDateStyle([{border: 'solid red'}, {marginTop: '0px'}])
-                setDateError('Booking can not be for date that has already passed')
+                setDateStyle([{border: 'solid red'}, {marginTop: '0px'}]);
+                setDateError('Booking can not be for date that has already passed');
             }
             else if(props.bookingStates.date === '') {
                 validDate = false;
-                setDateStyle([{border: 'solid red'}, {marginTop: '0px'}])
-                setDateError('Please provide a date for your booking')
+                setDateStyle([{border: 'solid red'}, {marginTop: '0px'}]);
+                setDateError('Please provide a date for your booking');
             }
             else {
                 validDate = true;
-                setDateStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}])
+                setDateStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}]);
             }
         }
 
@@ -68,7 +68,7 @@ function Bookings(props) {
             }
             else {
                 validTime = true;
-                setTimeStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}])
+                setTimeStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}]);
             }
         }
 
@@ -81,7 +81,7 @@ function Bookings(props) {
             }
             else {
                 validGuests = true;
-                setGuestStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}])
+                setGuestStyle([{border: '1px solid black'}, {marginTop: '0px', display: 'none'}]);
             }
         }
 
@@ -97,7 +97,7 @@ function Bookings(props) {
         props.bookingStates.date, isTouchedDate,
         props.bookingStates.time, isTouchedTime,
         props.bookingStates.guests, isTouchedGuests
-    ])
+    ]);
 
     return (
         <div>
@@ -106,7 +106,7 @@ function Bookings(props) {
             </div>
             <form className='resForm'>
 
-                <label htmlFor="">Name for booking</label>
+                <label htmlFor="res-name">Name for booking</label>
                 <input style={nameStyle[0]} type="name" name="res-name" id="res-name" onChange={e => {props.bookingStates.setName(e.target.value)}} value={props.bookingStates.name} onBlur={e => {setIsTouchedName(true)}}/>
                 <div name='invalidName' style={nameStyle[1]}>Name must be at least three (3) characters long</div>
 
