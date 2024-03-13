@@ -8,9 +8,10 @@ import { Routes, Route, useNavigate} from "react-router-dom";
 import ConfirmedBooking from './confirmBooking';
 import useInitTimes from './mainComponents/useInitTimes';
 import useUpdateTimes from './mainComponents/useUpdateTimes';
+import Staff from './mainComponents/Staff';
 
 
-function Main() {
+function Main(props) {
 
     const navigate = useNavigate();
     const [name, setName] = useState('')
@@ -50,13 +51,14 @@ function Main() {
     return(
         <main>
             <Routes>
-                <Route path="/" element={<Home/>} />
+                <Route path="/" element={<Home isNav={props.isNav} setIsNav={props.setIsNav}/>} />
                 {/*<Route path="/about" element={<About/>} /> */}
                 <Route path="/menu" element={<Menu/>} />
                 <Route path="/reservations" element={<Bookings bookingStates={{...bookingStates}} />} />
                 <Route path="/order" element={<Order/>} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/confirmation" element={<ConfirmedBooking/>}/>
+                <Route path="/staff" element={<Staff/>}/>
             </Routes>
         </main>
     )
