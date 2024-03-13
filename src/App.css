@@ -141,9 +141,9 @@ button:active {
 .Card {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  min-width: 380px;
-  height: 650px;
+  width: 380px;
+  max-height: 650px;
+  min-height: 300px;
   background-color: rgb(237, 239, 238);
   margin: 10px;
   border-radius: 16px;
@@ -192,6 +192,13 @@ button:active {
   margin-top: 7px;
   position: relative;
   top: 11px;
+}
+.menuContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px);
+  justify-content: space-around;
+  margin: auto;
+  max-width: 1280px;
 }
 .reviewBackground {
   display: flex;
