@@ -5,7 +5,7 @@ function useUpdateTimes(setAvailableTimes) {
     const setTimes = setAvailableTimes
 
 
-    useEffect(() => {fetchTimes()}, [url])
+    useEffect(() => {if (url != null) fetchTimes()}, [url]);
 
     function fetchTimes() {
         // get available times for datestring passed to getTimes function from LittleLemon API
