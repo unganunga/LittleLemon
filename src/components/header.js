@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 
 
-function Header() {
+function Header(props) {
     return(
         <header className="head">
-            <Link to={'/'}>
+            <Link to={'/'} onClick={() => props.setIsNav(true)}>
                 <img src={Lemn} height={'70rem'} className="headImg"></img>
             </Link>
-            <Nav/>
+            <Nav setIsNav = {props.setIsNav}/>
         </header>
     )
 }
