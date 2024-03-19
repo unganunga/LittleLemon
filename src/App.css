@@ -425,12 +425,45 @@ a {
 a:hover {
   font-weight: bolder;
 }
+.burger {
+  display: none;
+  cursor: pointer;
+}
+.burger > div {
+  background-color: grey;
+}
+.burger:hover > div {
+  background-color: black;
+}
+#NavDropDown {
+  pointer-events: none;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+#NavDropDown.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 @media only screen and (max-width: 1080px){
   .aboutContainer {
     justify-content: center;
   }
   .reviewBackground {
     height: 850px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .navList {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+  .navHead {
+    width: 40px;
+    margin: 0 15px;
   }
 }
 @media only screen and (max-width: 670) {
@@ -448,13 +481,7 @@ a:hover {
 }
 @media only screen and (max-width: 540px) {
   header > a > img {
-    height: 2.2rem;
-    margin: 5px;
-  }
-  .navList {
-    justify-content: left;
-  }
-  .navList > li {
+    height: 3rem;
     margin: 5px;
   }
   .footerContainer {
